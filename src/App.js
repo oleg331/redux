@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { connect } from './store/connect';
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <p>Hello world!</p>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <p>Hello world!</p>
+        </header>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state, props) => {
