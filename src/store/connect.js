@@ -10,7 +10,6 @@ export function connect(mapStateToProps, mapDispatchToProps) {
           <UserConsumer>
             {state => (
               <ConnectedComponent
-                context={state}
                 {...this.props}
                 {...mapStateToProps(state.store.getState(), this.props)}
                 {...mapDispatchToProps(state.store.dispatch, this.props)}
