@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import store from './index';
+import { UserConsumer } from '../UserContext';
 
 export function connect(mapStateToProps, mapDispatchToProps) {
-  return function(ConnectedComponent) {
+  return ConnectedComponent => {
     return class extends Component {
       render() {
         return (
-          <ConnectedComponent
-            {...this.props}
-            {...mapStateToProps(store.getState(), this.props)}
-            {...mapDispatchToProps(store.dispatch, this.props)}
-          />
+          <UserConsumer>
+            {state => (
+              <ConnectedComponent
+                {...this.props}
+                {...mapStateToProps(state.store.getState(), this.props)}
+                {...mapDispatchToProps(state.store.dispatch, this.props)}
+              />
+            )}
+          </UserConsumer>
         );
       }
 
